@@ -11,7 +11,16 @@
         <div class="card h-100">
             <img src="https://i.ibb.co/GH5M860/bram-naus-n8-Qb1-ZAk-K88-unsplash.jpg" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column">
-                <h5 class="card-title"><%= blog_post.title %></h5>
+                <h5 class="card-title"><%= blog_post.title %>
+                <% if blog_post.draft? %>
+                        <span class="badge bg-warning text-dark ml-2">Draft</span>
+                    <% elsif blog_post.scheduled? %>
+                        <span class="badge bg-info ml-2">Scheduled</span>
+                    <% else %>
+                        <span class="badge bg-success ml-2">Published</span>
+                    <% end %>
+                </h5>
+                
                 <p class="card-text flex-grow-1">
                     <%= truncate(blog_post.content.body.to_plain_text, length: 100) %>
                 </p>
