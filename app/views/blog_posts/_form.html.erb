@@ -1,22 +1,23 @@
-<%= form_with model: blog_post do |form| %>
 
-<% if form.object.errors.any? %>
-    <div>
-        <% form.object.errors.full_messages.each do |message| %>
-            <div>
-                    <%= message %>
+<div class="container mt-5 w-50">
+    <%= form_with model: blog_post do |form| %>
+        <% if form.object.errors.any? %>
+            <div class="alert alert-danger">
+                <% form.object.errors.full_messages.each do |message| %>
+                    <div><%= message %></div>
+                <% end %>
             </div>
         <% end %>
-    </div>
-<% end %>
 
-<div>
-<%= form.label :title %>
-<%= form.text_field :title %>
+        <div class="mb-3">
+            <%= form.label :title, class: "form-label" %>
+            <%= form.text_field :title, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :content, class: "form-label" %>
+            <%= form.rich_text_area :content, class: "form-control" %>
+        </div>
+        <%= form.button class: "btn btn-primary" %>
+    <% end %>
 </div>
-<div>
-<%= form.label :body %>
-<%= form.text_area :body %>
-</div>
-<%= form.button %>
-<% end %>
+

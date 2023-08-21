@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ .card-img-top {
+    transition: transform 0.3s;
+}
+
+.card:hover .card-img-top {
+    transform: scale(0.9); /* Decrease this value for a stronger zoom-out effect */
+}

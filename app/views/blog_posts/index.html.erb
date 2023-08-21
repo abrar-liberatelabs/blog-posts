@@ -1,10 +1,23 @@
-<h1>My Blogs!</h1>
-
-<% @blog_posts.each do |blog_post| %>
-<div>
-<%= link_to "New Blog Post", new_blog_post_path %>
-
-<h2><%= link_to blog_post.title, blog_post %></h2>
-<%= blog_post.body%>
+<div class="d-flex justify-content-between align-items-center mb-5">
+    <h1 class="">My Blogs!</h1>
+    <div>
+        <%= link_to "New Blog Post", new_blog_post_path, class: "btn btn-primary" %>
+    </div>
 </div>
-<% end %>
+
+<div class="row">
+    <% @blog_posts.each do |blog_post| %>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <img src="https://i.ibb.co/GH5M860/bram-naus-n8-Qb1-ZAk-K88-unsplash.jpg" class="card-img-top" alt="...">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title"><%= blog_post.title %></h5>
+                <p class="card-text flex-grow-1">
+                    <%= truncate(blog_post.content.body.to_plain_text, length: 100) %>
+                </p>
+                <%= link_to "Read More", blog_post, class: "btn btn-primary mt-auto" %>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
